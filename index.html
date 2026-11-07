@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160b2c">
+  <title>Happy Diwali | Light Up Your Dreams</title>
+  <style>
+    :root { --gold:#ffd36a; --orange:#ff8b32; --cream:#fff3d6; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; color:var(--cream); font-family:Georgia, 'Times New Roman', serif;
+      background:radial-gradient(ellipse at 50% 5%, #48205d 0%, #211039 42%, #10091e 100%);
+      min-height:100vh; overflow-x:hidden;
+    }
+    .stars,.stars:before,.stars:after {
+      position:fixed; inset:0; pointer-events:none; content:""; z-index:0;
+      background-image:radial-gradient(2px 2px at 20px 30px,#fff 50%,transparent 55%),
+        radial-gradient(1px 1px at 90px 80px,#ffd98a 50%,transparent 55%),
+        radial-gradient(1.5px 1.5px at 160px 140px,#fff 50%,transparent 55%);
+      background-size:210px 190px; opacity:.45;
+    }
+    .stars:before { transform:translate(80px,55px); opacity:.5; }
+    .stars:after { transform:translate(130px,110px); opacity:.35; }
+    .wrap { position:relative; z-index:1; width:min(1100px,92%); margin:auto; }
+    
+    /* Top Personal Greeting Banner */
+    .personal-greeting-banner {
+      background: linear-gradient(135deg, rgba(255, 211, 106, 0.2), rgba(255, 139, 50, 0.25));
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin: 15px 0 5px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(255, 211, 106, 0.15);
+      backdrop-filter: blur(5px);
+    }
+    .personal-greeting-banner p {
+      margin: 0;
+      font-size: 15px;
+      color: #ffe5a1;
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .personal-greeting-banner strong {
+      color: var(--gold);
+      font-size: 17px;
+    }
+
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; }
+    .brand { color:var(--gold); letter-spacing:3px; font-size:13px; text-transform:uppercase; }
+    nav a { color:#f9e9c9; text-decoration:none; margin-left:22px; font:14px Arial,sans-serif; }
+    nav a:hover { color:var(--gold); }
+    .hero { min-height:78vh; display:grid; place-items:center; text-align:center; padding:45px 0 75px; }
+    .eyebrow { color:var(--gold); letter-spacing:5px; text-transform:uppercase; font:12px Arial,sans-serif; }
+    h1 { font-size:clamp(48px,9vw,100px); line-height:.98; margin:22px 0 18px; color:#ffe5a1;
+      text-shadow:0 0 18px #ffae3d88,0 5px 30px #ff7b2680; }
+    h1 span { display:block; color:#fff5dd; font-size:.52em; letter-spacing:7px; margin-top:18px; }
+    .intro { max-width:650px; margin:0 auto; color:#f1dfca; font:17px/1.8 Arial,sans-serif; }
+    .actions { display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:30px; }
+    button,.btn { border:1px solid var(--gold); border-radius:999px; padding:13px 23px; cursor:pointer;
+      background:linear-gradient(135deg,#ffcf68,#ff8c35); color:#35152c; font-weight:bold; text-decoration:none;
+      font: bold 14px Arial,sans-serif; box-shadow:0 5px 22px #ff9b3b44; }
+    .btn.secondary { background:transparent; color:var(--gold); box-shadow:none; }
+    .diya-row { display:flex; justify-content:center; gap:clamp(25px,7vw,75px); margin-top:48px; }
+    .diya { position:relative; width:72px; height:42px; border-radius:8px 8px 45px 45px;
+      background:linear-gradient(#ffca63,#d65b22); box-shadow:0 10px 25px #ff7b2855; }
+    .diya:before { content:""; position:absolute; width:18px; height:29px; left:27px; top:-27px;
+      background:radial-gradient(ellipse at 50% 75%,#fffbd1 0 15%,#ffd34e 38%,#ff7a20 70%,transparent 72%);
+      filter:drop-shadow(0 0 12px #ffb52e); border-radius:50% 50% 45% 45%; animation:flicker 1.2s infinite alternate; }
+    .diya:after { content:""; position:absolute; width:90px; height:18px; left:-9px; bottom:-7px;
+      border-radius:50%; background:#ff9b2c33; filter:blur(7px); }
+    @keyframes flicker { from{transform:scale(.9) rotate(-3deg)} to{transform:scale(1.08) rotate(3deg)} }
+    section { padding:65px 0; text-align:center; }
+    h2 { color:var(--gold); font-size:clamp(30px,5vw,48px); margin:0 0 16px; }
+    .section-copy { max-width:700px; margin:0 auto 32px; color:#e9d8c5; font:16px/1.8 Arial,sans-serif; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; text-align:left; }
+    .card { padding:25px; border:1px solid #ffd36a55; border-radius:18px;
+      background:linear-gradient(145deg,#ffffff12,#ffffff05); backdrop-filter:blur(8px); }
+    .card .symbol { font-size:30px; }
+    .card h3 { color:#ffda86; margin:13px 0 8px; font-size:22px; }
+    .card p { color:#e9d8c5; font:14px/1.7 Arial,sans-serif; margin:0; }
+    .photo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; max-width:900px; margin:30px auto; text-align:left; }
+    .photo-card { overflow:hidden; border:1px solid #ffd36a66; border-radius:18px; background:#ffffff0d; }
+    .photo-card img { display:block; width:100%; height:300px; object-fit:cover; }
+    .photo-card .photo-text { padding:18px 20px; }
+    .photo-card h3 { color:#ffda86; margin:0 0 8px; font-size:22px; }
+    .photo-card p { color:#e9d8c5; font:14px/1.7 Arial,sans-serif; margin:0; }
+    
+    .video-container {
+      max-width: 900px;
+      margin: 30px auto 0;
+      border: 1px solid #ffd36a66;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ffffff0d;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-info {
+      padding: 18px 20px;
+      text-align: left;
+    }
+    .video-info h3 {
+      color: #ffda86;
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+    .video-info p {
+      color: #e9d8c5;
+      font: 14px/1.7 Arial,sans-serif;
+      margin: 0;
+    }
+
+    .credit { display:block; color:#cbb9ad; font:11px/1.5 Arial,sans-serif; margin-top:10px; }
+    .hi { display:block; color:#ffe8bd; margin-top:5px; font-family:Arial,sans-serif; }
+    .story-card { max-width:900px; margin:28px auto 0; padding:clamp(22px,4vw,38px);
+      border:1px solid #ffd36a66; border-radius:20px; text-align:left;
+      background:linear-gradient(145deg,#ffffff12,#ffffff05); }
+    .story-card h3 { color:#ffda86; font-size:23px; margin:22px 0 12px; }
+    .story-card h3:first-child { margin-top:0; }
+    .story-card p, .story-card li { color:#f0dfcd; font:15px/1.95 Arial,sans-serif; }
+    .story-card ul { padding-left:24px; }
+    .story-card li { margin:9px 0; }
+    .story-ending { color:#ffe3a0 !important; font-weight:bold !important; border-top:1px solid #ffd36a55; padding-top:18px; }
+    .story-note { color:#cbb9ad !important; font-size:12px !important; }
+    .quote { max-width:800px; margin:auto; padding:35px 25px; border-top:1px solid #ffd36a66;
+      border-bottom:1px solid #ffd36a66; color:#fff0cc; font-size:clamp(22px,4vw,34px); line-height:1.5; }
+    .quote small { display:block; color:var(--gold); font:12px Arial,sans-serif; letter-spacing:3px; margin-top:18px; }
+    footer { text-align:center; padding:35px 0 45px; color:#cbb9ad; font:12px Arial,sans-serif; }
+    .spark { position:fixed; pointer-events:none; z-index:5; font-size:20px; animation:burst 1.3s ease-out forwards; }
+    @keyframes burst { 0%{transform:translate(0,0) scale(.4);opacity:1} 100%{transform:translate(var(--x),var(--y)) scale(1.5);opacity:0} }
+    @media(max-width:700px) { header{display:block;text-align:center} nav{margin-top:16px} nav a{margin:0 9px}
+      .cards,.photo-grid{grid-template-columns:1fr} .photo-card img{height:250px} .hero{min-height:72vh} .intro{font-size:15px} }
+    @media(prefers-reduced-motion:reduce) { *,*:before,*:after{animation:none!important;scroll-behavior:auto!important} }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="wrap">
+    
+    <!-- Top Greeting Banner from Satyam -->
+    <div class="personal-greeting-banner">
+      <p>🪔 Warmest Diwali Wishes & Blessings from <strong>Satyam</strong> | सत्यम की तरफ से दीपावली की हार्दिक शुभकामनाएँ ✨</p>
+    </div>
+
+    <header>
+      <div class="brand">✦ Festival of Lights ✦</div>
+      <nav aria-label="Main navigation"><a href="#wishes">Wishes</a><a href="#darshan">Darshan & Bhajan</a><a href="#diwali-story">दीपावली कथा</a><a href="#inspiration">Inspiration</a><a href="#message">Message</a></nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div>
+          <div class="eyebrow">A celebration of light, hope & new beginnings · प्रकाश, आशा और नई शुरुआत का त्योहार</div>
+          <h1>Happy Diwali<span>शुभ दीपावली</span></h1>
+          <p class="intro">May every diya bring a new ray of hope, every sparkle brighten your path, and every moment fill your heart with happiness. Wishing you and your family a blessed Diwali — <strong>Satyam</strong>.
+          <span class="hi">हर दीपक आपके जीवन में नई आशा जगाए, हर चमक आपके रास्ते को रोशन करे और हर पल खुशियों से भर जाए। सत्यम की ओर से आप सभी को दीपावली की ढेर सारी शुभकामनाएँ!</span></p>
+          <div class="actions">
+            <a class="btn" href="#wishes">Explore the wishes</a>
+            <button type="button" id="sparkleBtn">✨ Celebrate with sparkles</button>
+          </div>
+          <div class="diya-row" aria-label="Glowing festive diyas">
+            <div class="diya"></div><div class="diya"></div><div class="diya"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="wishes">
+        <h2>Wishes That Shine · खुशियों भरी शुभकामनाएँ</h2>
+        <p class="section-copy">May this Diwali open the doors to peace, prosperity, good health and beautiful opportunities.
+        <span class="hi">यह दीपावली आपके जीवन में सुख, समृद्धि, अच्छा स्वास्थ्य और नए अवसर लेकर आए।</span></p>
+        <div class="cards">
+          <article class="card"><div class="symbol">🪔</div><h3>Light & Happiness · रोशनी और खुशियाँ</h3><p>May the light of Diwali remove every darkness and fill your home with laughter, warmth and togetherness.<span class="hi">दीपावली की रोशनी आपके जीवन का हर अंधकार दूर करे और घर को हँसी, प्रेम व अपनापन से भर दे।</span></p></article>
+          <article class="card"><div class="symbol">🌟</div><h3>Success & Growth · सफलता और उन्नति</h3><p>May your hard work turn into achievement and may every new day bring you closer to your goals.<span class="hi">आपकी मेहनत सफलता में बदले और हर नया दिन आपको आपके लक्ष्य के और करीब ले जाए।</span></p></article>
+          <article class="card"><div class="symbol">💛</div><h3>Love & Peace · प्रेम और शांति</h3><p>May your life be surrounded by kind people, peaceful moments and countless reasons to smile.<span class="hi">आपका जीवन अच्छे लोगों, शांति भरे पलों और मुस्कुराने की अनगिनत वजहों से भरा रहे।</span></p></article>
+        </div>
+      </section>
+
+      <section id="darshan">
+        <h2>Divine Blessings · प्रभु श्रीराम का आशीर्वाद</h2>
+        <p class="section-copy">Celebrate the return of Lord Rama to Ayodhya and the victory of light over darkness.
+        <span class="hi">प्रभु श्रीराम के अयोध्या लौटने और अधर्म पर धर्म की विजय के पावन पर्व को श्रद्धा और प्रेम से मनाएँ।</span></p>
+        <div class="photo-grid">
+          <article class="photo-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lord_Rama_2.jpg" alt="Painting of Lord Rama with Sita, Lakshmana and Hanuman" loading="lazy">
+            <div class="photo-text"><h3>Lord Shri Ram · प्रभु श्रीराम</h3><p>May Lord Rama bless you with courage, wisdom and righteousness.<span class="hi">प्रभु श्रीराम आपको साहस, बुद्धि और सत्य के मार्ग पर चलने की शक्ति दें।</span><a class="credit" href="https://commons.wikimedia.org/wiki/File:Lord_Rama_2.jpg" target="_blank" rel="noopener">Image: Lakshmi Narsimhan · Public domain (Wikimedia Commons)</a></div>
+          </article>
+          <article class="photo-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sweets_Mithai_for_Diwali_and_other_Festivals_of_India.jpg" alt="Traditional Indian sweets and mithai for Diwali" loading="lazy">
+            <div class="photo-text"><h3>Diwali Sweets · दीपावली की मिठाइयाँ</h3><p>Share sweetness, spread smiles and make beautiful memories with your loved ones.<span class="hi">अपनों के साथ मिठास बाँटें, मुस्कान फैलाएँ और यादगार पल बनाएँ।</span><a class="credit" href="https://commons.wikimedia.org/wiki/File:Sweets_Mithai_for_Diwali_and_other_Festivals_of_India.jpg" target="_blank" rel="noopener">Image: Laura · CC BY-SA 2.0 (Wikimedia Commons)</a></div>
+          </article>
+        </div>
+
+        <div class="video-container">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/vH3A8NMd-EI" title="राम आवे अवध की ओर सजनी | Ram Aave Awadh Ki Ore Sajni" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h3>राम आवे अवध की ओर सजनी · Ram Aave Awadh Ki Ore Sajni</h3>
+            <p>Listen to this serene bhajan celebrating the arrival of Shri Ram back to Awadh!
+            <span class="hi">प्रभु श्रीराम के अवध आगमन के इस मधुर एवं पावन भजन का आनंद लें।</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="diwali-story">
+        <h2>दीपावली की कहानी · Why We Celebrate Diwali</h2>
+        <p class="section-copy">दीपावली भारत का एक प्राचीन और पावन त्योहार है। इसे प्रकाश, अच्छाई और नई शुरुआत का उत्सव माना जाता है।</p>
+        <div class="story-card">
+          <h3>🪔 भगवान श्रीराम की अयोध्या वापसी</h3>
+          <p>मान्यता के अनुसार, त्रेतायुग में भगवान श्रीराम को 14 वर्षों का वनवास मिला था। वनवास के दौरान माता सीता का रावण ने हरण कर लिया। भगवान श्रीराम ने वानर सेना और भक्त हनुमान की सहायता से रावण पर विजय प्राप्त की और माता सीता को मुक्त कराया।</p>
+          <p>चौदह वर्ष का वनवास पूरा करके जब भगवान श्रीराम, माता सीता और लक्ष्मण जी अयोध्या लौटे, तब अयोध्या के लोगों ने अपने प्रिय राजा के स्वागत में पूरे नगर को दीपों से सजाया। घर-घर दीपक जलाए गए और खुशियाँ मनाई गईं। इसी परंपरा की याद में दीपावली पर दीप जलाए जाते हैं।</p>
+          <p>यह कथा हमें सिखाती है कि सत्य, धैर्य और अच्छाई की राह पर चलने वालों की अंततः विजय होती है। दीपावली हमें अपने जीवन से अज्ञान, निराशा और बुराई के अंधकार को दूर करके ज्ञान, प्रेम और सद्भाव का प्रकाश फैलाने की प्रेरणा देती है।</p>
+          <h3>दीपावली क्यों मनाई जाती है?</h3>
+          <ul>
+            <li><strong>अच्छाई की जीत:</strong> भगवान श्रीराम की रावण पर विजय और अयोध्या वापसी की खुशी में।</li>
+            <li><strong>प्रकाश का पर्व:</strong> अंधकार पर प्रकाश और निराशा पर आशा की जीत का प्रतीक।</li>
+            <li><strong>लक्ष्मी-गणेश पूजा:</strong> अनेक परिवार इस दिन सुख, समृद्धि और बुद्धि के लिए पूजा करते हैं।</li>
+            <li><strong>प्रेम और एकता:</strong> परिवार और मित्र मिलकर खुशियाँ बाँटते हैं, घर सजाते हैं और मिठाइयाँ बाँटते हैं।</li>
+          </ul>
+          <p class="story-ending">✨ संदेश: अपने मन में प्रेम का दीप जलाएँ, दूसरों के जीवन में खुशियों की रोशनी फैलाएँ और हमेशा सत्य तथा अच्छाई का साथ दें।</p>
+          <p class="story-note">भारत के अलग-अलग क्षेत्रों और परंपराओं में दीपावली से जुड़ी अन्य धार्मिक और सांस्कृतिक मान्यताएँ भी प्रचलित हैं।</p>
+        </div>
+      </section>
+
+      <section id="inspiration">
+        <h2>Let Your Dreams Glow · अपने सपनों को चमकने दें</h2>
+        <p class="section-copy">Diwali reminds us that even a small flame can brighten a dark room. In the same way, one small step taken with courage can change your future.
+        <span class="hi">दीपावली सिखाती है कि एक छोटा-सा दीपक भी अंधकार मिटा सकता है। उसी तरह, हिम्मत से उठाया गया एक छोटा कदम आपका भविष्य बदल सकता है।</span></p>
+        <div class="cards">
+          <article class="card"><div class="symbol">🔥</div><h3>Believe in Yourself · खुद पर विश्वास रखें</h3><p>Your potential is greater than your fear. Trust your abilities and keep moving forward.<span class="hi">आपकी क्षमता आपके डर से बड़ी है। खुद पर भरोसा रखें और आगे बढ़ते रहें।</span></p></article>
+          <article class="card"><div class="symbol">🚀</div><h3>Keep Moving · आगे बढ़ते रहें</h3><p>Big achievements begin with small efforts. Be consistent, learn from setbacks and never stop growing.<span class="hi">बड़ी सफलता छोटे प्रयासों से शुरू होती है। निरंतर मेहनत करें, गलतियों से सीखें और बढ़ते रहें।</span></p></article>
+          <article class="card"><div class="symbol">🌱</div><h3>Choose Positivity · सकारात्मक सोच अपनाएँ</h3><p>Let go of yesterday's worries. Welcome fresh ideas, fresh energy and a brighter tomorrow.<span class="hi">बीते कल की चिंताओं को छोड़ें। नए विचारों, नई ऊर्जा और उज्ज्वल कल का स्वागत करें।</span></p></article>
+        </div>
+      </section>
+
+      <section id="message">
+        <div class="quote">“Be the light that guides your dreams, the courage that defeats your fears, and the hope that inspires others.”<span class="hi">“अपने सपनों को राह दिखाने वाली रोशनी बनें, अपने डर को हराने वाला साहस बनें और दूसरों को प्रेरित करने वाली आशा बनें।”</span><small>YOUR DIWALI MOTIVATION · आपकी दीपावली प्रेरणा</small></div>
+        <p class="section-copy" style="margin-top:28px">Wishing you and your family a joyful, safe and prosperous Diwali! — <strong>Satyam</strong><span class="hi">सत्यम की ओर से आपको और आपके परिवार को आनंदमय, सुरक्षित और समृद्ध दीपावली की हार्दिक शुभकामनाएँ!</span></p>
+        <button type="button" id="wishBtn">🪔 Send a festive greeting</button>
+      </section>
+    </main>
+    <footer>Made with ✨ and warm wishes by Satyam · Happy Diwali · शुभ दीपावली</footer>
+  </div>
+  <script>
+    const sparkleBtn = document.getElementById('sparkleBtn');
+    function sparkle(x, y) {
+      const icons = ['✦','✧','✨','★','🪔'];
+      for (let i = 0; i < 18; i++) {
+        const s = document.createElement('span');
+        s.className = 'spark';
+        s.textContent = icons[Math.floor(Math.random() * icons.length)];
+        s.style.left = x + 'px'; s.style.top = y + 'px';
+        s.style.setProperty('--x', (Math.random() * 260 - 130) + 'px');
+        s.style.setProperty('--y', (Math.random() * 240 - 120) + 'px');
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 1400);
+      }
+    }
+    sparkleBtn.addEventListener('click', e => sparkle(e.clientX, e.clientY));
+    document.getElementById('wishBtn').addEventListener('click', () => {
+      const message = '🪔 Happy Diwali! Wishes from Satyam: May your life shine with happiness, success, peace and endless possibilities. Keep believing, keep growing and keep glowing! ✨';
+      if (navigator.share) navigator.share({title:'Happy Diwali from Satyam!', text:message}).catch(() => {});
+      else if (navigator.clipboard) {
+        navigator.clipboard.writeText(message).then(() => alert('Diwali greeting from Satyam has been copied!'));
+      } else alert(message);
+    });
+    document.addEventListener('click', e => {
+      if (e.target.tagName === 'A' && e.target.hash) {
+        sparkle(e.clientX || innerWidth/2, e.clientY || innerHeight/2);
+      }
+    });
+  </script>
+</body>
+</html>
